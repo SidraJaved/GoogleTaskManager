@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myApp'>
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>GoogleTaskManager</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/logo-nav.css" rel="stylesheet">
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.js"></script>
+
+<script src="js/main.js"></script>
+</head>
+
+<body ng-controller="IndexController">
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"> <img src="img/logo_aside.png"
+					alt="">
+
+				</a>
+			</div>
+
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<!-- Page Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<h1>Google Task Manager</h1>
+				<p>This web app helps you maintain tasks and access it
+					from anywhere.</p>
+				<p>With this application, you can add more tasks, delete task or
+					delete all existing tasks as per your requirements.</p>
+
+				<button id="b1" ng-click="call()" class="btn-sm btn btn-primary"
+					type="button">Grant Access to Application</button>
+
+			</div>
+			<div id="btns" class="col-lg-4">
+				<h2 ng-bind="title"></h2>
+				<span data-toggle="tooltip" data-placement="bottom"
+					title="Add New Task">
+					<button class="btn btn-primary btn-m" data-toggle="modal"
+						data-target="#edit">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</span>
+
+				<button ng-click="DeleteAll();" class="btn btn-danger btn-m"
+					data-toggle="tooltip" data-placement="bottom"
+					title="Delete All Tasks">
+					<span class="glyphicon glyphicon-trash"></span>
+				</button>
+			</div>
+		</div>
+		<div class="row" id="table">
+			<div class="table-responsive">
+
+				<table id="mytable" class="table table-bordred table-striped">
+
+					<thead>
+
+						<th>Task ID</th>
+						<th>Task Title</th>
+						<th>Status</th>
+						<th>Delete</th>
+					</thead>
+					<tbody>
+
+						<tr ng-repeat="item in itemsArray">
+							<td ng-bind="item.id"></td>
+							<td ng-bind="item.title"></td>
+							<td ng-bind="item.status"></td>
+							<td><p data-placement="top" data-toggle="tooltip"
+									title="Delete">
+									<button ng-click="deletetask(item);"
+										class="btn btn-danger btn-xs" data-title="Delete"
+										data-toggle="modal" data-target="#delete">
+										<span class="glyphicon glyphicon-trash"></span>
+									</button>
+								</p></td>
+						</tr>
+
+
+
+
+
+
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- /.container -->
+	<div class="modal fade" id="edit" tabindex="-1" role="dialog"
+		aria-labelledby="edit" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+					<h4 class="modal-title custom_align" id="Heading">Add New Task</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<input ng-model="newtask" class="form-control " type="text"
+							placeholder="Your task..">
+					</div>
+				</div>
+				<div class="modal-footer ">
+					<button ng-click="AddTask();" type="button"
+						class="btn btn-warning btn-lg" style="width: 100%;">
+						<span class="glyphicon glyphicon-ok-sign"></span> Add Task
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+
+
+</body>
+
+</html>
