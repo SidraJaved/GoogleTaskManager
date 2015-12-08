@@ -10,11 +10,7 @@
     <version>7.0</version> <!-- Put here the version of your Java EE app, in my case 7.0 -->
     <scope>provided</scope>
 </dependency>
-<dependency>
-          <groupId>com.google.api-client</groupId>
-          <artifactId>google-api-client</artifactId>
-          <version>1.20.0</version>
-        </dependency>
+
 
   </dependencies>
   <build>
